@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %} Servicios {% endblock %}
+
+{% block pageHeader %}Eliminar Servicio{% endblock %}
+
+{% block content %}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+       Eliminar
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-6">
+                 <form role="form" method="POST">{% csrf_token %}
+                    <div class="form-group">
+                        <p>¿Está seguro que desea eliminar el registro?</p>
+                    </div>
+                <button type="submit" class="btn btn-default">Eliminar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

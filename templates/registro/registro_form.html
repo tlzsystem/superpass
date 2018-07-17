@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %} Registros {% endblock %}
+
+{% block pageHeader %}Agregar Registro{% endblock %}
+
+{% block content %}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+       Nuevo
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-6">
+                <form role="form" method="POST">{% csrf_token %}
+                    <div class="form-group">
+                        <label for="{{ form.servicio.id_for_label }}">Servicio</label>
+                        <select class="form-control" required id="{{ form.servicio.id_for_label }}" name="{{ form.servicio.html_name }}">
+                            {% for servicio in form.servicio %}
+                                {{ servicio }}
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.reg_user.id_for_label }}">Usuario</label>
+                        <input type="text" class="form-control" id="{{ form.reg_user.id_for_label }}" name="{{ form.reg_user.html_name }}"
+                            placeholder="Usuario" value="{{ form.reg_user.value|default_if_none:'' }}" maxlength="100" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.reg_user.id_for_label }}">Password</label>
+                        <input type="text" class="form-control" id="{{ form.reg_pass.id_for_label }}" name="{{ form.reg_pass.html_name }}"
+                            placeholder="Password" value="{{ form.reg_pass.value|default_if_none:'' }}" maxlength="100" required>
+                    </div>
+                <button type="submit" class="btn btn-default">Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

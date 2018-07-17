@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %} Registros {% endblock %}
+
+{% block pageHeader %}Lista de Registros{% endblock %}
+
+{% block content %}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <a class="badge badge-primary" href="{% url 'registro-create' %}"><i class="fa fa-plus-circle fa-fw"></i>Agregar</a>
+    </div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Servicio</th>
+                        <th>User</th>
+                        <th>Pass</th>
+                        <th>Fecha Creación</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for registro in object_list %}
+                    <tr>
+                        <td>{{ registro.servicio }}</td>
+                        <td>{{ registro.reg_user }}</td>
+                        <td>{{ registro.reg_pass }}</td>
+                        <td>{{ registro.created }}</td>
+                        <td>
+                            <a class="badge badge-primary" href="#"><i class="fa fa-eye fa-fw"></i>Ver</a>
+                            <a class="badge badge-primary" href="{% url 'registro-update' registro.id %}"><i class="fa fa-edit fa-fw"></i>Editar</a>
+                            <a class="badge badge-primary" href="{% url 'registro-delete' registro.id %}"><i class="fa fa-trash-o fa-fw"></i>Borrar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

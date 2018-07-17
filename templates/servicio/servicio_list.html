@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %} Servicios {% endblock %}
+
+{% block pageHeader %}Lista de Servicios{% endblock %}
+
+{% block content %}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <a class="badge badge-primary" href="{% url 'servicio-create' %}"><i class="fa fa-plus-circle fa-fw"></i>Agregar</a>
+    </div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>URL</th>
+                        <th>Fecha creación</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for servicio in object_list %}
+                    <tr>
+                        <td>{{ servicio.name }}</td>
+                        <td><a href="{{ servicio.url }}">{{ servicio.url }}</a></td>
+                        <td>{{ servicio.created }}</td>
+                        <td>
+                            <a class="badge badge-primary" href="{% url 'servicio-update' servicio.id %}"><i class="fa fa-edit fa-fw"></i>Editar</a>
+                            <a class="badge badge-primary" href="{% url 'servicio-delete' servicio.id %}"><i class="fa fa-trash-o fa-fw"></i>Borrar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
