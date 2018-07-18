@@ -59,9 +59,7 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        <li><a href="{% url 'password_change' %}?next=/"><i class="fa fa-user fa-fw"></i> Cambiar Password</a>
                         </li>
                         <li class="divider"></li>
                         <li><a href="{% url 'logout' %}?next=/"><i class="fa fa-sign-out fa-fw"></i> Salir</a>
@@ -127,6 +125,8 @@
     <!-- Custom Theme JavaScript -->
     <script src="{% static "dist/js/sb-admin-2.js" %}"></script>
 
+    {% block customJS %}
+    {% endblock %}
 </body>
 
 </html>

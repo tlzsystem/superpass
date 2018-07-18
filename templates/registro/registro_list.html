@@ -11,7 +11,7 @@
     </div>
     <div class="panel-body">
         <div class="table-responsive">
-            <table class="table table-hover">
+            <table class="table">
                 <thead>
                     <tr>
                         <th>Servicio</th>
@@ -26,10 +26,10 @@
                     <tr>
                         <td>{{ registro.servicio }}</td>
                         <td>{{ registro.reg_user }}</td>
-                        <td>{{ registro.reg_pass }}</td>
+                        <td><input id="cod{{ registro.id }}" type="password" value="{{ registro.reg_pass }}" readonly style="border:0px transparent; outline:none;"></td>
                         <td>{{ registro.created }}</td>
                         <td>
-                            <a class="badge badge-primary" href="#"><i class="fa fa-eye fa-fw"></i>Ver</a>
+                            <a class="badge badge-primary" onclick="reveal('cod{{ registro.id }}');"><i class="fa fa-eye fa-fw"></i>Ver</a>
                             <a class="badge badge-primary" href="{% url 'registro-update' registro.id %}"><i class="fa fa-edit fa-fw"></i>Editar</a>
                             <a class="badge badge-primary" href="{% url 'registro-delete' registro.id %}"><i class="fa fa-trash-o fa-fw"></i>Borrar</a>
                         </td>
@@ -41,4 +41,12 @@
     </div>
 </div>
 
+{% endblock %}
+
+{% block customJS %}
+<script>
+    function reveal(id){
+        document.getElementById(id).type='text';
+    }
+</script>
 {% endblock %}
